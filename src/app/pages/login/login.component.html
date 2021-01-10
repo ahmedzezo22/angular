@@ -1,0 +1,51 @@
+
+  
+<h2 class="text-center login">Login</h2>
+<div *ngIf="(login.submitted)&&msg" class="alert alert-success login" >
+    {{msg}}
+    </div>
+
+<form #login="ngForm" (ngSubmit)="login.form.valid && onLoginSubmit()">
+    <input 
+    name="email" 
+    email required 
+    placeholder="Email" 
+    [(ngModel)]="userModal.email"
+    #email="ngModel"
+    [ngClass]=" { 'invalid-data' : (login.submitted && email.invalid) }"
+    class="form-control"
+    >
+    <div *ngIf="login.submitted && email.invalid">
+        <div *ngIf="email.errors?.required" class="alert alert-danger py-3">
+            required email
+        </div>
+        <div *ngIf="email.errors?.email"class="alert alert-danger py-3">
+            invalid email
+        </div>
+    </div>
+    <br>
+    <input 
+    name="password" 
+    required minlength="6"
+    type="password" 
+    [(ngModel)]="userModal.password"
+    #password = "ngModel"
+    placeholder="password"
+    [ngClass]=" { 'invalid-data' : (login.submitted && password.invalid) }"
+    class="form-control"
+    >
+    <div *ngIf="login.submitted && password.invalid">
+        <div *ngIf="password.errors?.required"class="alert alert-danger">
+            required password
+        </div>
+        <div *ngIf="password.errors?.minlength"class="alert alert-danger">
+            must be more than 6
+        </div>
+    </div>
+
+    <br>
+    <button class="btn btn-primary py-2">login</button>
+
+
+</form>
+

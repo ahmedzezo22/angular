@@ -1,0 +1,78 @@
+<section class="container border border-3 p-5 m-5">
+    <div class=" text-center" >
+        <h2 class="badge bg-primary p-3 fs-4 m-3">Register</h2>
+      </div>
+        <form [formGroup]="register"  (ngSubmit)="registerUser()">
+            <div class="mb-3">
+                <label class="form-label">User Name</label>
+                <input type="text" class="form-control" name="name" formControlName="name"  required>
+                 <div *ngIf="register.controls['name'].invalid&&register.controls['name'].touched||register.controls['name'].dirty">
+                  <div *ngIf="register.controls['name'].errors?.required" class="alert alert-info">
+                    name is required
+                  </div>
+                 </div>
+              </div>
+            <div class="mb-3">
+              <label class="form-label">Email address</label>
+              <input type="email" class="form-control" name="email" formControlName="email" required email>
+              <div *ngIf="register.controls['email'].invalid&&register.controls['email'].touched||register.controls['email'].dirty">
+                <div *ngIf="register.controls['email'].errors?.required" class="alert alert-info">
+                  email is required
+                </div>
+                <div *ngIf="register.controls['email'].errors?.email" class="alert alert-info">
+                 please write valid email
+                </div>
+               </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" name="password"formControlName="password" required>
+              <div *ngIf="register.controls['password'].invalid&&register.controls['password'].touched||register.controls['password'].dirty">
+                <div *ngIf="register.controls['password'].errors?.required" class="alert alert-info">
+                  password is required
+                </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="tel" class="form-control" name="phone"formControlName="phone"minlength required >
+                <div *ngIf="register.controls['phone'].invalid&&register.controls['phone'].touched||register.controls['phone'].dirty">
+                  <div *ngIf="register.controls['phone'].errors?.required" class="alert alert-info">
+                    phone is required
+                  </div>
+                  <div *ngIf="register.controls['phone'].errors?.minlength" class="alert alert-info">
+                   length must be 11 numbers
+                  </div>
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Age</label>
+                <input type="text" class="form-control" name="age" formControlName="age" required value="">
+                <div *ngIf="register.controls['age'].invalid&&register.controls['age'].touched||register.controls['age'].dirty">
+                  <div *ngIf="register.controls['age'].errors?.required" class="alert alert-info">
+                    age is required
+                  </div>
+                  <div *ngIf="register.controls['age'].errors?.value<16" class="alert alert-info">
+                  your age must be greater than 16
+                  </div>
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">gender</label>&nbsp; &nbsp;&nbsp;&nbsp;
+                Female<input type="radio"  name="gender" value="1" formControlName="gender">&nbsp;&nbsp;
+                Male<input type="radio" name="gender" value="0" formControlName="gender">
+              </div>
+              <div *ngIf="register.controls['gender'].invalid&&register.controls['gender'].touched||register.controls['gender'].dirty">
+                <div *ngIf="register.controls['gender'].errors?.required" class="alert alert-info">
+                  gender is required
+                </div>
+                </div>
+  
+            <button type="submit" [disabled]="register.invalid" class="btn btn-primary">register</button>
+            <div class="alert alert-success " style="margin-top: 20px !important;" *ngIf="(register.valid) && msg" >
+              {{msg}}
+              
+            </div>
+          </form>
+          
+</section>

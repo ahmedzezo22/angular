@@ -1,0 +1,16 @@
+.login{
+    margin-top: 23px;
+    width: 444px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 23px;
+}
+h2.login{
+    text-align: center!important;
+    background: #198754;
+    color: #fff;
+    /* display: inline-block; */
+    width: 142px;
+    margin: 20px auto;
+    padding: 10px;
+}
